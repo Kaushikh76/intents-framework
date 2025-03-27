@@ -8,17 +8,20 @@ import { ChainMetadataSchema } from "@hyperlane-xyz/sdk";
 import { objMerge } from "@hyperlane-xyz/utils";
 
 const customChainMetadata = {
-  // Example custom configuration
-  // basesepolia: {
-  //   rpcUrls: [
-  //     {
-  //       http: "https://base-sepolia-rpc.publicnode.com",
-  //       pagination: {
-  //         maxBlockRange: 3000,
-  //       },
-  //     },
-  //   ],
-  // },
+  coffeechain: {
+    chainId: 2910,
+    domainId: 2910,
+    name: "coffeechain",
+    protocol: "ethereum",
+    rpcUrls: [
+      {
+        http: "http://13.54.168.253:8547",
+        pagination: {
+          maxBlockRange: 3000,
+        },
+      },
+    ],
+  },
 };
 
 const chainMetadata = objMerge<ChainMap<ChainMetadata>>(

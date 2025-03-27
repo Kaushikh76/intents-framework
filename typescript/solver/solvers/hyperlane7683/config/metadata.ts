@@ -66,6 +66,13 @@ const metadata: Hyperlane7683Metadata = {
       pollInterval: 1000,
       confirmationBlocks: 2,
     },
+
+    {
+      address: "0x6D48d7e63262C904565e494638751B6F12f385F5",
+      chainName: "coffeechain",
+      initialBlock: 104, // Block where your router was deployed
+    },
+
   ],
   customRules: {
     rules: [
@@ -87,6 +94,10 @@ const metadata: Hyperlane7683Metadata = {
           "11155111": {
             "0x5f94BC7Fb4A2779fef010F96b496cD36A909E818": BigInt(5e18),
             [AddressZero]: BigInt(5e10),
+          },
+          "2910": {
+            "0x396E5F077f62F4e0262c89D9873136cC9e602899": BigInt(50e18), // Your ITT token
+            [AddressZero]: BigInt(5e15), // Native ETH minimum
           },
         },
       },

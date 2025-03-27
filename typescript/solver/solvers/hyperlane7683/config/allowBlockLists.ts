@@ -23,9 +23,16 @@ import {
 // ]
 
 const allowBlockLists: AllowBlockLists = {
-  allowList: [],
+  allowList: [
+    {
+      senderAddress: "*",
+      destinationDomain: ["coffeechain", "ethereum", "optimism", "arbitrum", "base"],
+      recipientAddress: "*"
+    }
+  ],
   blockList: [],
 };
+
 
 AllowBlockListsSchema.parse(allowBlockLists);
 
