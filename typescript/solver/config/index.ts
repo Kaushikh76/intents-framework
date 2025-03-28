@@ -1,7 +1,7 @@
 import dotenvFlow from "dotenv-flow";
 import z from "zod";
 import allowBlockListsGlobal from "./allowBlockLists.js";
-import { chainMetadata } from "./chainMetadata.js";
+import { chainIds, chainNames, chainIdsToName } from "./chains.js";  // Changed from local definition
 import { ConfigSchema } from "./types.js";
 
 dotenvFlow.config();
@@ -65,20 +65,5 @@ export function isAllowedIntent(
   return isAllowed;
 }
 
-const { chainIds, chainNames, chainIdsToName } = Object.entries(
-  chainMetadata,
-).reduce<{
-  chainNames: Array<string>;
-  chainIds: { [key: string]: number };
-  chainIdsToName: { [key: string]: string };
-}>(
-  (acc, [key, value]) => {
-    acc.chainNames.push(key);
-    acc.chainIds[key] = Number(value.chainId);
-    acc.chainIdsToName[value.chainId.toString()] = key;
-    return acc;
-  },
-  { chainNames: [], chainIds: {}, chainIdsToName: {} },
-);
-
+// Removed the chain metadata extraction code since it's now in chains.ts
 export { chainIds, chainIdsToName, chainNames };

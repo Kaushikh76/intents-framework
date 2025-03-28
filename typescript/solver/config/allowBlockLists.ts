@@ -20,13 +20,7 @@ import { AllowBlockLists, AllowBlockListsSchema } from "./types.js";
 // ]
 
 const allowBlockLists: AllowBlockLists = {
-  allowList: [
-    {
-      senderAddress: "*",
-      destinationDomain: ["coffeechain", "sepolia", "basesepolia", "arbitrumsepolia"],
-      recipientAddress: "*"
-    }
-  ],
+  allowList: [],
   blockList: [],
 };
 

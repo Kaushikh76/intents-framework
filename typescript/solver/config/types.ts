@@ -1,6 +1,6 @@
 import z from "zod";
 import { isAddress } from "@ethersproject/address";
-import { chainNames } from "./index.js";
+import { chainNames } from "./chains.js";
 
 export const addressSchema = z
   .string()

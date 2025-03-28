@@ -26,7 +26,7 @@ const allowBlockLists: AllowBlockLists = {
   allowList: [
     {
       senderAddress: "*",
-      destinationDomain: ["coffeechain", "ethereum", "optimism", "arbitrum", "base"],
+      destinationDomain: ["coffeechain", "ethereum", "optimism", "arbitrum", "base","sepolia", "basesepolia", "arbitrumsepolia"],
       recipientAddress: "*"
     }
   ],

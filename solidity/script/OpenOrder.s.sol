@@ -33,7 +33,10 @@ contract OpenOrder is Script {
         uint256 destinationDomain = vm.envUint("DESTINATION_DOMAIN");
         uint32 fillDeadline = type(uint32).max;
 
-        ERC20(inputToken).approve(localRouter, amountIn);
+        // Only approve if it's an ERC20 token, not for native ETH
+        if (inputToken != address(0)) {
+            ERC20(inputToken).approve(localRouter, amountIn);
+        }
 
         OrderData memory order = OrderData(
             TypeCasts.addressToBytes32(sender),
@@ -56,7 +59,12 @@ contract OpenOrder is Script {
             OrderEncoder.encode(order)
         );
 
-        Hyperlane7683(localRouter).open(onchainOrder);
+        // For native ETH, include the value in the transaction
+        if (inputToken == address(0)) {
+            Hyperlane7683(localRouter).open{value: amountIn}(onchainOrder);
+        } else {
+            Hyperlane7683(localRouter).open(onchainOrder);
+        }
 
         vm.stopBroadcast();
     }
