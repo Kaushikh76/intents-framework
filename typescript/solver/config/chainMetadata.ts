@@ -17,10 +17,17 @@ const customChainMetadata = {
       {
         http: "http://13.54.168.253:8547",
         pagination: {
-          maxBlockRange: 3000,
+          maxBlockRange: 1000, // Reducing this to avoid "too many queries" issues
+        },
+        retry: {
+          maxRequests: 5,
+          baseRetryMs: 1000,
         },
       },
     ],
+    transactionOverrides: {
+      gasLimit: 3000000, // Providing a generous gas limit
+    },
   },
   arbitrumsepolia: {
     // Override the default Arbitrum Sepolia configuration
@@ -30,18 +37,24 @@ const customChainMetadata = {
     protocol: "ethereum",
     rpcUrls: [
       {
-        http: "https://arb-sepolia.g.alchemy.com/v2/md_4BdnpQJO6ZxK3OnqCFJozztmaW-iy", // Replace with your API key
-        timeout: 30000, // 30 seconds timeout
+        http: "https://sepolia-rollup.arbitrum.io/rpc",
+        timeout: 30000,
         pagination: {
-          maxBlockRange: 3000,
+          maxBlockRange: 1000,
+        },
+        retry: {
+          maxRequests: 5,
+          baseRetryMs: 1000,
         },
       },
-      // Add Infura or other providers as backup
       {
-        http: "https://arbitrum-sepolia.blockpi.network/v1/rpc/public",
+        http: "https://arbitrum-sepolia.publicnode.com",
         timeout: 30000,
       },
     ],
+    transactionOverrides: {
+      gasLimit: 3000000,
+    },
   },
   basesepolia: {
     chainId: 84532,
@@ -50,21 +63,24 @@ const customChainMetadata = {
     protocol: "ethereum",
     rpcUrls: [
       {
-        http: "https://base-sepolia.g.alchemy.com/v2/md_4BdnpQJO6ZxK3OnqCFJozztmaW", // Replace with your API key
+        http: "https://sepolia.base.org",
         timeout: 30000,
         pagination: {
-          maxBlockRange: 3000,
+          maxBlockRange: 1000,
+        },
+        retry: {
+          maxRequests: 5,
+          baseRetryMs: 1000,
         },
       },
       {
-        http: "https://sepolia.base.org",
-        timeout: 30000,
-      },
-      {
-        http: "https://base-sepolia.blockpi.network/v1/rpc/public",
+        http: "https://base-sepolia.publicnode.com",
         timeout: 30000,
       },
     ],
+    transactionOverrides: {
+      gasLimit: 3000000,
+    },
   },
   sepolia: {
     chainId: 11155111,
@@ -73,25 +89,52 @@ const customChainMetadata = {
     protocol: "ethereum",
     rpcUrls: [
       {
-        http: "https://eth-sepolia.g.alchemy.com/v2/md_4BdnpQJO6ZxK3OnqCFJozztmaW", // Replace with your API key
+        http: "https://ethereum-sepolia.publicnode.com",
         timeout: 30000,
         pagination: {
-          maxBlockRange: 3000,
+          maxBlockRange: 1000,
+        },
+        retry: {
+          maxRequests: 5,
+          baseRetryMs: 1000,
         },
       },
       {
-        http: "https://rpc.sepolia.org",
-        timeout: 30000,
-      },
-      {
-        http: "https://eth-sepolia.public.blastapi.io",
-        timeout: 30000,
-      },
-      {
-        http: "https://ethereum-sepolia.blockpi.network/v1/rpc/public",
+        http: "https://sepolia.gateway.tenderly.co",
         timeout: 30000,
       },
     ],
+    transactionOverrides: {
+      maxFeePerGas: 50000000000, // 50 gwei
+      maxPriorityFeePerGas: 2000000000, // 2 gwei
+      gasLimit: 3000000,
+    },
+  },
+  optimismsepolia: {
+    chainId: 11155420,
+    domainId: 11155420, 
+    name: "optimismsepolia",
+    protocol: "ethereum",
+    rpcUrls: [
+      {
+        http: "https://sepolia.optimism.io",
+        timeout: 30000,
+        pagination: {
+          maxBlockRange: 1000,
+        },
+        retry: {
+          maxRequests: 5,
+          baseRetryMs: 1000,
+        },
+      },
+      {
+        http: "https://optimism-sepolia.publicnode.com",
+        timeout: 30000,
+      },
+    ],
+    transactionOverrides: {
+      gasLimit: 3000000,
+    },
   },
 };
 

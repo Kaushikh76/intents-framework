@@ -37,6 +37,9 @@ export class SolverManager {
   ) {}
 
   async initializeSolvers() {
+    let successes = 0;
+    let failures = 0;
+    
     for (const [solverName, config] of Object.entries(solversConfig)) {
       if (!config.enabled) {
         this.log.info(`Solver ${solverName} is disabled, skipping...`);
@@ -44,28 +47,42 @@ export class SolverManager {
       }
 
       try {
-        await this.initializeSolver(solverName as SolverName);
+        const success = await this.initializeSolver(solverName as SolverName);
+        if (success) successes++;
+        else failures++;
       } catch (error: any) {
         this.log.error(
           `Failed to initialize solver ${solverName}: ${error.message}`
         );
-        throw error;
+        failures++;
       }
+    }
+
+    if (failures > 0) {
+      this.log.warn(`Initialized ${successes} solvers, ${failures} failed.`);
+    } else {
+      this.log.info("All solvers initialized successfully");
     }
   }
 
   private async initializeSolver(name: SolverName) {
-    const solver = solvers[name as keyof typeof solvers] as SolverModule;
-    if (!solver) {
-      throw new Error(`Solver ${name} not found`);
+    try {
+      const solver = solvers[name as keyof typeof solvers] as SolverModule;
+      if (!solver) {
+        throw new Error(`Solver ${name} not found`);
+      }
+
+      this.log.info(`Initializing solver: ${name}`);
+
+      const listener = await solver.listener.create();
+      const filler = solver.filler.create(this.multiProvider, solver.rules);
+
+      this.activeListeners.push(listener(filler));
+      return true;
+    } catch (error: any) {
+      this.log.error(`Failed to initialize solver ${name}: ${error.message}`);
+      return false;
     }
-
-    this.log.info(`Initializing solver: ${name}`);
-
-    const listener = await solver.listener.create();
-    const filler = solver.filler.create(this.multiProvider, solver.rules);
-
-    this.activeListeners.push(listener(filler));
   }
 
   shutdown() {

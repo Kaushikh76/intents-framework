@@ -96,8 +96,8 @@ const metadata: Hyperlane7683Metadata = {
             [AddressZero]: BigInt(5e10),
           },
           "2910": {
-            "0x396E5F077f62F4e0262c89D9873136cC9e602899": BigInt(50e18), // Your ITT token
-            [AddressZero]: BigInt(5e15), // Native ETH minimum
+            "0x396E5F077f62F4e0262c89D9873136cC9e602899": BigInt(50e18), 
+            [AddressZero]: BigInt(5e15), 
           },
         },
       },
