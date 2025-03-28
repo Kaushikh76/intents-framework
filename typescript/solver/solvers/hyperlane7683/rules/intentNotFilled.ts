@@ -18,12 +18,10 @@ export function intentNotFilled(): Hyperlane7683Rule {
         parsedArgs.resolvedOrder.fillInstructions[0].destinationChainId.toString();
       const destinationChainName = chainIdsToName[destinationChainId];
       
-      // Log the details for debugging
       console.log(`Intent check for ${parsedArgs.orderId}:`);
       console.log(`Destination Chain: ${destinationChainName} (${destinationChainId})`);
       console.log(`Destination Settler from order: ${destinationSettler}`);
       
-      // Find the correct router address for the destination chain from metadata
       const metadataRouter = metadata.intentSources.find(
         source => source.chainName === destinationChainName
       );
@@ -37,7 +35,6 @@ export function intentNotFilled(): Hyperlane7683Rule {
       
       console.log(`Router from metadata: ${metadataRouter.address}`);
       
-      // If there's a mismatch, we should use the correct router from metadata
       const routerToUse = metadataRouter.address;
       
       const filler = await context.multiProvider.getSigner(destinationChainId);

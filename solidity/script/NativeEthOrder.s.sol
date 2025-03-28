@@ -23,8 +23,8 @@ contract NativeEthOrder is Script {
         address localRouter = vm.envAddress("ROUTER_ADDRESS");
         address sender = vm.envAddress("ORDER_SENDER");
         address recipient = vm.envAddress("ORDER_RECIPIENT");
-        address inputToken = vm.envAddress("ITT_INPUT");  // Should be zero address
-        address outputToken = vm.envAddress("ITT_OUTPUT");  // Should be zero address
+        address inputToken = vm.envAddress("ITT_INPUT");  
+        address outputToken = vm.envAddress("ITT_OUTPUT");  
         uint256 amountIn = vm.envUint("AMOUNT_IN");
         uint256 amountOut = vm.envUint("AMOUNT_OUT");
         uint256 senderNonce = vm.envUint("SENDER_NONCE");
