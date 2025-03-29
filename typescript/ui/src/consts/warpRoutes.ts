@@ -3,8 +3,7 @@ import { zeroAddress } from 'viem';
 
 const ROUTER = '0xf614c6bF94b022E16BEF7dBecF7614FFD2b201d3';
 const ITT = '0x5f94BC7Fb4A2779fef010F96b496cD36A909E818';
-const COFFEE_CHAIN_ITT = '0x396E5F077f62F4e0262c89D9873136cC9e602899';
-const COFFEE_CHAIN_ROUTER = '0x6D48d7e63262C904565e494638751B6F12f385F5';
+
 const NETWORK_SEPARATOR = '101010';
 
 export const TOP_MAX = {
@@ -24,10 +23,6 @@ export const TOP_MAX = {
     [ITT]: 100e18,
     [zeroAddress]: 1e16,
   },
-  'coffeechain': {
-    [COFFEE_CHAIN_ITT]: 100e18,
-    [zeroAddress]: 1e16,
-  },
 }
 
 // A list of Warp Route token configs
@@ -35,40 +30,6 @@ export const TOP_MAX = {
 // The input here is typically the output of the Hyperlane CLI warp deploy command
 export const warpRouteConfigs: WarpCoreConfig = {
   tokens: [
-    {
-      addressOrDenom: COFFEE_CHAIN_ITT,
-      chainName: 'coffeechain',
-      collateralAddressOrDenom: COFFEE_CHAIN_ROUTER,
-      connections: [
-        { token: 'ethereum|optimismsepolia|' + ITT },
-        { token: 'ethereum|basesepolia|' + ITT },
-        { token: 'ethereum|arbitrumsepolia|' + ITT },
-        { token: 'ethereum|sepolia|' + ITT },
-      ],
-      decimals: 18,
-      logoURI: '/deployments/warp_routes/ETH/logo.svg',
-      name: 'ITT',
-      standard: 'Intent',
-      symbol: 'ITT',
-      protocol: 'ethereum',
-    },
-    {
-      addressOrDenom: zeroAddress,
-      chainName: 'coffeechain',
-      collateralAddressOrDenom: COFFEE_CHAIN_ROUTER,
-      connections: [
-        { token: 'ethereum|optimismsepolia|' + zeroAddress },
-        { token: 'ethereum|basesepolia|' + zeroAddress },
-        { token: 'ethereum|arbitrumsepolia|' + zeroAddress },
-        { token: 'ethereum|sepolia|' + zeroAddress },
-      ],
-      decimals: 18,
-      logoURI: '/deployments/warp_routes/ETH/logo.svg',
-      name: 'ETH',
-      standard: 'IntentNative',
-      symbol: 'ETH',
-      protocol: 'ethereum',
-    },
     {
       addressOrDenom: ITT,
       chainName: 'optimismsepolia',
@@ -251,30 +212,30 @@ export const warpRouteConfigs: WarpCoreConfig = {
     interchainFeeConstants: [
       {
         amount: 3e14,
-        origin: ['optimismsepolia', 'basesepolia', 'arbitrumsepolia', 'coffeechain'].join(NETWORK_SEPARATOR),
+        origin: ['optimismsepolia', 'basesepolia', 'arbitrumsepolia'].join(NETWORK_SEPARATOR),
         destination: 'sepolia',
         addressOrDenom: zeroAddress,
       },
       {
         amount: 75e16,
-        origin: ['optimismsepolia', 'basesepolia', 'arbitrumsepolia', 'coffeechain'].join(NETWORK_SEPARATOR),
+        origin: ['optimismsepolia', 'basesepolia', 'arbitrumsepolia'].join(NETWORK_SEPARATOR),
         destination: 'sepolia',
         addressOrDenom: ITT,
       },
       {
         amount: 1e10,
-        origin: ['optimismsepolia', 'basesepolia', 'arbitrumsepolia', 'sepolia', 'coffeechain'].join(
+        origin: ['optimismsepolia', 'basesepolia', 'arbitrumsepolia', 'sepolia'].join(
           NETWORK_SEPARATOR,
         ),
-        destination: ['optimismsepolia', 'basesepolia', 'arbitrumsepolia', 'coffeechain'].join(NETWORK_SEPARATOR),
+        destination: ['optimismsepolia', 'basesepolia', 'arbitrumsepolia'].join(NETWORK_SEPARATOR),
         addressOrDenom: zeroAddress,
       },
       {
         amount: 5e16,
-        origin: ['optimismsepolia', 'basesepolia', 'arbitrumsepolia', 'sepolia', 'coffeechain'].join(
+        origin: ['optimismsepolia', 'basesepolia', 'arbitrumsepolia', 'sepolia'].join(
           NETWORK_SEPARATOR,
         ),
-        destination: ['optimismsepolia', 'basesepolia', 'arbitrumsepolia', 'coffeechain'].join(NETWORK_SEPARATOR),
+        destination: ['optimismsepolia', 'basesepolia', 'arbitrumsepolia'].join(NETWORK_SEPARATOR),
         addressOrDenom: ITT,
       },
     ],
