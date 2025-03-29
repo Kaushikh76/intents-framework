@@ -52,10 +52,6 @@ const metadata: Hyperlane7683Metadata = {
       chainName: "optimismsepolia",
     },   
     {
-      address:"0x4C1abFd400C706e34C415c072e2157fBb63089a4",
-      chainName: "arbitrumsepolia"
-    },
-    {
       address: "0xf614c6bF94b022E16BEF7dBecF7614FFD2b201d3",
       chainName: "arbitrumsepolia",
     },

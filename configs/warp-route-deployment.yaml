@@ -1,0 +1,40 @@
+arbitrumsepolia:
+  interchainSecurityModule:
+    modules:
+      - relayer: "0xEbeaa370Ae20E45A33209921B1024e4477425D7c"
+        type: trustedRelayerIsm
+      - domains: {}
+        owner: "0xEbeaa370Ae20E45A33209921B1024e4477425D7c"
+        type: defaultFallbackRoutingIsm
+    threshold: 1
+    type: staticAggregationIsm
+  isNft: false
+  owner: "0xEbeaa370Ae20E45A33209921B1024e4477425D7c"
+  type: native
+basesepolia:
+  interchainSecurityModule:
+    modules:
+      - relayer: "0xEbeaa370Ae20E45A33209921B1024e4477425D7c"
+        type: trustedRelayerIsm
+      - domains: {}
+        owner: "0xEbeaa370Ae20E45A33209921B1024e4477425D7c"
+        type: defaultFallbackRoutingIsm
+    threshold: 1
+    type: staticAggregationIsm
+  isNft: false
+  owner: "0xEbeaa370Ae20E45A33209921B1024e4477425D7c"
+  type: native
+coffeechain:
+  interchainSecurityModule:
+    modules:
+      - relayer: "0xEbeaa370Ae20E45A33209921B1024e4477425D7c"
+        type: trustedRelayerIsm
+      - domains: {}
+        owner: "0xEbeaa370Ae20E45A33209921B1024e4477425D7c"
+        type: defaultFallbackRoutingIsm
+    threshold: 1
+    type: staticAggregationIsm
+  isNft: false
+  owner: "0xEbeaa370Ae20E45A33209921B1024e4477425D7c"
+  type: native
+
