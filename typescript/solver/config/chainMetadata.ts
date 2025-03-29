@@ -17,7 +17,7 @@ const customChainMetadata = {
       {
         http: "http://13.54.168.253:8547",
         pagination: {
-          maxBlockRange: 1000, // Reducing this to avoid "too many queries" issues
+          maxBlockRange: 1000,
         },
         retry: {
           maxRequests: 5,
@@ -26,11 +26,10 @@ const customChainMetadata = {
       },
     ],
     transactionOverrides: {
-      gasLimit: 3000000, // Providing a generous gas limit
+      gasLimit: 3000000, 
     },
   },
   arbitrumsepolia: {
-    // Override the default Arbitrum Sepolia configuration
     chainId: 421614,
     domainId: 421614,
     name: "arbitrumsepolia",
