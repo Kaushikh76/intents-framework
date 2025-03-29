@@ -103,7 +103,7 @@ variable are set:
 
 ### Open an Order
 
-For opening an onchain order you can run `yarn run:openOrder`. Make sure the following environment variable are set:
+For opening an onchain order you can run `  `. Make sure the following environment variable are set:
 
 - `ROUTER_OWNER_PK`: the router's owner private key. Only the owner can enroll routers
 - `ORDER_SENDER`: address of order sender

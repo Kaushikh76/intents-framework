@@ -50,6 +50,10 @@ const metadata: Hyperlane7683Metadata = {
     {
       address: "0xf614c6bF94b022E16BEF7dBecF7614FFD2b201d3",
       chainName: "optimismsepolia",
+    },   
+    {
+      address:"0x4C1abFd400C706e34C415c072e2157fBb63089a4",
+      chainName: "arbitrumsepolia"
     },
     {
       address: "0xf614c6bF94b022E16BEF7dBecF7614FFD2b201d3",
@@ -70,7 +74,7 @@ const metadata: Hyperlane7683Metadata = {
     {
       address: "0x6D48d7e63262C904565e494638751B6F12f385F5",
       chainName: "coffeechain",
-      initialBlock: 104, // Block where your router was deployed
+      initialBlock: 104, 
     },
 
   ],
@@ -97,7 +101,7 @@ const metadata: Hyperlane7683Metadata = {
           },
           "2910": {
             "0x396E5F077f62F4e0262c89D9873136cC9e602899": BigInt(50e18), 
-            [AddressZero]: BigInt(5e15), 
+            "0x0000000000000000000000000000000000000000": BigInt(50e18),
           },
         },
       },

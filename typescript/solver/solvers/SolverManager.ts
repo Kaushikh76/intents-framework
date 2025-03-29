@@ -91,4 +91,4 @@ export class SolverManager {
     this.activeListeners.forEach((stopListener) => stopListener());
     this.activeListeners = [];
   }
-}
+} 
