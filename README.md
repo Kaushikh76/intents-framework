@@ -8,7 +8,7 @@
 <div align="center">A modular, open-source framework for permissionless, scalable intent execution.</div>
 <br />
 
-# Open Intents Framework
+# Open Intents Framework Configured for Coffee-Chain
 
 [![License: MIT][license-badge]][license]
 
